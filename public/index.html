@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CA Havran Jiří - Cestovní agentura Štětí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{
+--ink:#1B2A3C;
+--ink-soft:#3C4C5E;
+--paper:#F5F0E6;
+--paper-dark:#EAE1CC;
+--gold:#B8862E;
+--gold-deep:#8F6620;
+--teal:#3C6E68;
+--line:#D2C4A0;
+--white:#FFFDF8;
+
+box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px);
+padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:76px}
+
+body{
+margin:0;
+background:var(--paper);
+color:var(--ink);
+font-family:"Work Sans", system-ui, sans-serif;
+font-size:16px;
+line-height:1.55;
+-webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+font-family:"Fraunces", Georgia, serif;
+font-weight:600;
+color:var(--ink);
+margin:0 0 .4em;
+line-height:1.12;
+}
+
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{
+max-width:1080px;
+margin:0 auto;
+padding:0 24px;
+}
+
+/* ---------- perforated / airmail (pigeon) divider ---------------- */
+.airmail-rule{
+height:6px;
+background:repeating-linear-gradient(
+-55deg,
+var(--teal) 0 14px,
+var(--paper) 14px 20px,
+var(--gold) 20px 34px,
+var(--paper) 34px 40px
+);
+opacity:.85;
+}
+
+/* --------- nav ----------- */
+header.site{
+position:sticky;
+top:0;
+z-index:40;
+background:rgba(245,240,230,.92);
+backdrop-filter:blur(6px);
+border-bottom:1px solid var(--line);
+padding-top:env(safe-area-inset-top,0px);
+}
+nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 24px;
+max-width:1080px;
+margin:0 auto;
+gap:16px;
+}
+.brand{
+display:flex;
+align-items:baseline;
+gap:10px;
+font-family:"Fraunces",serif;
+font-weight:600;
+font-size:1.25rem;
+white-space:nowrap;
+}
+.brand small{
+font-family:"Work Sans",sans-serif;
+font-weight:500;
+font-size:.62rem;
+letter-spacing:.04em;
+color:var(--teal)
+}
+.nav-links{
+display:flex;
+gap:26px;
+list-style:none;
+margin:0;
+padding:0;
+font-size:.94rem;
+}
+.nav links a{
+text-decoration:none;
+border-bottom:2px solid transparent;
+padding-bottom:3px;
+transition:border-color .15s ease;
+}
+.nav-links a:hover, .nav-links a:focus-visible{border-color:var(--gold)}
+
+.status-chip{
+display:inline-flex;
+align-items:center;
+gap:6px;
+font-size:.78rem;
+font-weight:500;
+padding:6px 12px;
+border:1px solid var(--line);
+border-radius:999px;
+background:var(--white);
+white-space:nowrap;
+}
+.status-chip .dot{
+width:7px;height:7px;border-radius:50%;
+background:var(--teal);
+}
+
+.nav-toggle{display:none}
+
+@media (max-width:720px){
+.nav-links{
+position:absolute;
+top:100%;left:0;right:0;
+flex-direction:column;
+background:var(--paper);
+border-bottom:1px solid var(--line);
+padding:16px 24px 20px;
+gap:14px;
+display:none;
+}
+.nav-links.open{display:flex}
+.nav-toggle{
+display:inline-flex;
+align-itens:center;
+justify-content:center;
+width:38px;height:38px;
+border:1px solid var(--line);
+background:var(--white);
+border-radius:8px;
+font-size:1.1rem;
+cursor:pointer;
+}
+.status-chip{display:none}
+}
+
+/* ------- hero --------- */
+.hero{
+padding:64px 0 56px;
+}
+.hero-grid{
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:48px;
+align-items:center;
+}
+.hero h1{
+font-size:clamp(2.1rem, 4.6vw, 3.2rem);
+max-width:11ch;
+}
+.hero p.lede{
+font-size:1.08rem;
+color:var(--ink-soft);
+max-width:46ch;
+margin:0 0 26px;
+}
+.hero-cta{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+.btn{
+display:inline-block;
+text-decoration:none;
+font-weight:600;
+font-size:.95rem;
+padding:13px 24px;
+border-radius:3px;
+transition:transform .12s ease, box-shadow .12s ease;
+border:none;
+cursor:pointer;
+}
+.btn-primary{
+background:var(--ink);
+color:var(--white);
+}
+.btn-primary:hover{background:var(--gold-deep)}
+.btn-primary:disabled{
+background:#a0a0a0;
+cursor:not-allowed;
+}
+.btn-ghost{
+background:transparent;
+color:var(--ink);
+border:1.5px solid var(--ink);
+}
+.btn-ghost:hover{border-color:var(--gold-deep); color:var(--gold-deep)}
+
+/* postcard/stamp graphic */
+.postcard{
+position:relative;
+background:var(--white);
+border:1px solid var(--line);
+border-radius:2px;
+padding:26px 24px;
+box-shadow:0 1px 0 var(--line);
+transform:rotate(2deg);
+}
+.postcard::before{
+content:"";
+position:absolute;
+inset:8px;
+border:1px dashed var(--gold);
+pointer-events:none;
+opacity:.55;
+}
+.postmark{
+position:absolute;
+top:-18px;
+width:92px;height:92px;
+border:2px solid var(--teal);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-family:"Fraunces",serif;
+font-size:.62rem;
+font-weight:600;
+letter-spacing:.03em;
+color:var(--teal);
+background:var(--paper);
+transform:rotate(-8deg);
+line-height:1.25;
+padding:6px;
+}
+.postcard h3{
+font-size:1.05rem;
+margin-bottom:10px;
+color:var(--teal);
+}
+.postcard ul{
+list-style:none;
+margin:0;
+padding:0;
+font-size:.94rem;
+}
+.postcard li{
+display:flex;
+justify-content:space-between;
+gap:12px;
+padding:8px 0;
+border-bottom:1px solid var(--paper-dark);
+}
+.postcard li:last-child{border-bottom:none}
+.postcard li span:first-child{color:var(--ink-soft)}
+.postcard li span:last-child{font-weight:600}
+
+@media (max-width:820px){
+.hero-grid{grid-template-columns:1fr}
+.postcard{transform:none; max-width:420px}
+}
+
+/* ------- section shell --------- */
+section{padding:64px 0}
+.section-head{
+max-width:56ch;
+margin-bottom:34px;
+}
+.section-head h2{font-size:clamp(1.5rem,3vw,2rem)}
+.section-head p{color:var(--ink-soft); font-size:1.02rem; margin:0}
+
+/* ------------------ o ná ------------------------------ */
+.about-cols{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+.about-cols p{color:var(--ink-soft); max-width:52ch}
+@media (max-width:720px){.about-cols{grid-template-columns:1fr}}
+
+/* -------- nabídka CA (boarding-pass chips) --------------- */
+.ck-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill, minmax(210px,1fr));
+gap:14px;
+}
+.ck-chip{
+position:relaxive;
+display:flex;
+align-items:center;
+gap:12px;
+background:var(--white);
+border:1px solid var(--line);
+border-left:4px solid var(--teal);
+padding:14px 16px;
+font-weight:600;
+font-size:.98rem;
+}
+.ck-chip .glyph{
+font-family:"Fraunces",serif;
+font-weight:700;
+font-size:1rem;
+color:var(--teal);
+width:30px;height:30px;
+border:1px solid var(--teal);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+flex:none
+}
+.ck-note{
+margin-top:22px;
+font-size:.88rem;
+color:var(--ink-soft);
+border-top:1px solid var(--line);
+padding-top:16px;
+}
+
+/* ------------------------- solarium ----------------------- */
+.solar{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:44px;
+align-items:start;
+}
+.solar-copy p{color:var(--ink-soft); max-width:50ch}
+.ticket{
+background:var(--ink);
+color:var(--white);
+padding:28px 26px;
+position:relative;
+border-radius:2px;
+}
+.ticket::after{
+content:"";
+position:absolute;
+left:0;right:0;bottom:64px;
+border-top:1px dashed rgba(255,255,255,.3);
+}
+.ticket .kicker{
+font-size:.78rem;
+color:var(--gold);
+font-weight:600;
+margin-bottom:6px;
+}
+.ticket h3{
+color:var(--white);
+font-size:1.3rem;
+margin-bottom:4px;
+}
+.ticket .model{
+font-size:.9rem;
+color:#C9D2D8;
+margin-bottom:22px;
+}
+.ticket .price{
+display:flex;
+align-items:baseline;
+gap:8px;
+margin-top:22px;
+}
+.ticket .price strong{
+font-family:"Fraunces",serif;
+font-size:2.4rem;
+font-weight:600;
+}
+.ticket .price span{color:#C9D2D8; font-size:.92rem}
+
+@media (max-width:820px){.solar{grid-template-columns:1fr}}
+
+/* ----------- hodiny + kontakt --------------- */
+.info-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+table.hours{
+width:100%;
+border-collapse:collapse;
+font-size:.98rem;
+}
+table.hours td{
+padding:10px 0;
+border-bottom:1px solid var(--paper-dark);
+}
+table.hours td:first-child{color:var(--ink-soft)}
+table.hours td:last-child{text-align:right; font-weight:600}
+table.hours tr.closed td:last-child{color:var(--gold-deep)}
+
+.contact-list{list-style:none; margin:0; padding:0}
+.contact-list li{
+padding:12px 0;
+border-bottom:1px solid var(--paper-dark);
+display:flex;
+flex-direction:column;
+gap:2px;
+}
+.contact-list li span.label{font-size:.78rem; color:var(--ink-soft)}
+.contact-list li a{
+font-weight:600;
+text-decoration:none;
+font-size:1.02rem;
+}
+.contact-list li a:hover{color:var(--gold-deep)}
+
+/* mapa container */
+.map-wrap{
+margin-top:34px;
+border:1px solid var(--line);
+background:var(--white);
+padding:6px;
+border-radius:2px;
+}
+.map-wrap iframe{
+width:100%;
+height:320px;
+border:none;
+display:block;
+}
+
+@media (max-width:720px){.info-grid{grid-template-columns:1fr}}
+
+/* ------------------ formular ------------------ */
+.form-shell{
+background:var(--white);
+border:1px solid var(--line);
+padding:34px;
+max-width:640px;
+}
+.field{margin-bottom:18px}
+.field label{
+display:block;
+font-size:.86rem;
+font-weight:600;
+margin-bottom:6px;
+color:var(--ink-soft);
+}
+.field input, .field textarea{
+width:100%;
+padding:11px 12px;
+border:1px solid var(--line);
+background:var(--paper);
+font-family:inherit;
+font-size:.98rem;
+color:var(--ink);
+border-radius:2px;
+}
+.field input:focus, .field textarea:focus{
+outline:2px solid var(--teal);
+outline-offset:1px;
+}
+.field textarea{resize:vertical; min-height:110px}
+.form-status{font-size:.9rem; margin-top:14px; display:none; padding:10px; border-radius:2px;}
+.form-status.ok{display:block; background:#d4edda; color:#155724; border:1px solid #c3e6cb;}
+.form-status.err{display:block; background:#f8f7da; color:#721c24; border:1px solid #f5c6cb;}
+
+/* --------------- footer --------------------- */
+footer{
+display:flex;
+flex-wrap:wrap;
+justify-content:space-between;
+gap:16px;
+font-size:.86rem;
+color:var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto}
+*{transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+<nav>
+<div class="brand">CA Havran Jiří <small>ŠTĚTÍ</small></div>
+<button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+<ul class="nav-links" id="navLinks">
+<li><a href="#o-nas">O nás</a></li>
+<li><a href="#nabidka">Nabídka</a></li>
+<li><a href="#solarium">Solárium</a></li>
+<li><a href="#kontakt">Kontakt</a></li>
+<li><a href="#formular">Poptávka</a></li>
+</ul>
+<span class="status-chip" id="statusChip"><span class="dot"></span><span id="statusText">Načítám...</span></span>
+</nav>
+</header>
+
+<div class="airmail-rule"></div>
+
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<h1>Vaše cesta začíná ve Štětí</h1>
+<p class="lede">Cestovní agentura Jiří Havran zprostředkovává zájezdy od prověřených cestovních kanceláří - od pláží po poznávací výlety - poradí vám osobně, ne přes formulář na druhém konci republiky.</p>
+<div class="hero-cta">
+<a href="#formular" class="btn btn-primary">Nezávazná poptávka</a>
+<a href="#nabidka" class="btn btn-ghost">Nabídka CA</a>
+</div>
+</div>
+
+<div class="postcard">
+<div class="postmark">CA<br>HAVRAN<br>ŠTĚTÍ</div>
+<h3>Provozní informace</h3>
+<ul>
+<li><span>Mobil</span><span>+420 602 114 053</span></li>
+<li><span>Telefon</span><span>+420 416 812 526</span></li>
+<li><span>E-mail</span><span>jirihavran@seznam.cz</span></li>
+<li><span>Po-Pá</span><span>10:00-12:00, 14:00-17:00</span></li>
+<li><span>Sobota</span><span>Podle telefonní domluvy</span></li>
+<li><span>Neděle</span><span>Zavřeno</span></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="o-nas">
+<div class="wrap">
+<div class="section-head">
+<h2>O agentuře</h2>
+</div>
+<div class="about-cols">
+<p>CA Havran Jiří působí ve Štětí a zprostředkovává zájezdy od nejznámějších českých i zahraničních cestovních kanceláří. Ať hledáte pobyt u moře, poznávací zájezd, nebo last minute nabídku, poradíme vám osobně a vybereme variantu podle vašeho rozpočtu a termínu.</p>
+<p>Kromě zprostředkování zájezdů nabízí agentura také solárium s výkonným lehátkem HAPRO Lumina 3603 - ideální pro rychlé osvěžení opálení kdykoliv v roce.</p>
+</div>
+</div>
+</section>
+
+<section id="nabidka" style="background:var(--paper-dark)">
+<div class="wrap">
+<div class="selection-head">
+<h2>Nabízené cestovní kanceláře</h2>
+<p>Zprostředkováváme zájezdy od těchto ověřených CK a touroperátorů.</p>
+</div>
+<div class="ck-grid">
+<div class="ck-chip"><span class="glyph">E</span>Exim Tours</div>
+<div class="ck-chip"><span class="glyph">B</span>Blue Style</div>
+<div class="ck-chip"><span class="glyph">Č</span>Čedok</div>
+<div class="ck-chip"><span class="glyph">A</span>Alexandrie</div>
+<div class="ck-chip"><span class="glyph">F</span>Fischer</div>
+<div class="ck-chip"><span class="glyph">E</span>Eso travel</div>
+<div class="ck-chip"><span class="glyph">C</span>China tours</div>
+<div class="ck-chip"><span class="glyph">C</span>Canaria Travel</div>
+<div class="ck-chip"><span class="glyph">D</span>Deluxea</div>
+<div class="ck-chip"><span class="glyph">N</span>Nev-Dama</div>
+<div class="ck-chip"><span class="glyph">F</span>Fede</div>
+<div class="ck-chip"><span class="glyph">I</span>Italieonline</div>
+<div class="ck-chip"><span class="glyph">A</span>Atis</div>
+<div class="ck-chip"><span class="glyph">T</span>TUI</div>
+</div>
+<p class="ck-note">Loga jednotlivých CK jsou ochranné známky příslušných společností - na vyžádání je doplníme po obdržení oficiálních podkladů od partnerů.</p>
+</div>
+</section>
+
+<section id="solarium">
+<div class="wrap solar">
+<div class="solar-copy">
+<h2>Solárium</h2>
+<p>V provozovně najdete i solárium s lehátkem HAPRO Lumina 3603 - jedním z nejvýkonnějších lehátek na trhu, vhodné pro rychlé a rovnoměrné opálení. Objednání není nutné, stačí přijít v provozní době.</p>
+</div>
+<div class="ticket">
+<div class="kicker">Solárium</div>
+<h3>HAPRO Lumina 3603</h3>
+<div class="model">výkonné lehátko, rovnoměrné opálení</div>
+<div class="price"><strong>12 Kč</strong><span>/ minuta</span></div>
+</div>
+</div>
+</section>
+
+<section id="kontakt" style="background:var(--paper-dark)">
+<div class="wrap">
+<div class="info-grid">
+<div>
+<h2>Otevírací doba</h2>
+<table class="hours">
+<tr><td>Pondělí - Pátek</td><td>10:00-12:00, 14:00-17:00</td></tr>
+<tr><td>Sobota</td><td>Podle telefonní domluvy</td></tr>
+<tr class="closed"><td>Neděle</td><td>zavřeno</td></tr>
+</table>
+</div>
+<div>
+<h2>Kontakt</h2>
+<ul class="contact-list">
+<li><span class="label">Adresa</span><a href="https://maps.google.com/?q=Kr%C3%A1tk%C3%A1+62,+411+08+%C5%A0t%C4%9Bt%C3%AD" target="_blank" rel="noopener">Krátká 62, 411 08 Štětí</a></li>
+<li><span class="label">Mobil</span><a href="tel:+420602114053">+420 602 114 053</a></li>
+<li><span class="label">Telefon</span><a href="tel:+420416812526">+420 416 812 526</a></li>
+<li><span class="label">E-mail</span><a href="mailto:jirihavran@seznam.cz">jirihavran@seznam.cz</a></li>
+</ul>
+</div>
+</div>
+
+<!-- Interaktivní Google Maps -->
+ <div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.51329243758!2d14.373461!3d50.450125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709848f6587c4a1%3A0x6b44bd35a229a1b1!2sKr%C3%A1tk%C3%A1%2062%2C%20411%2008%20%C5%A0t%C4%9Bt%C3%AD!5e0!3m2!1scs!2scz!4v1700000000000!5m2!1scs!2scz" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa CA Havran Jiří"></iframe>
+</div>
+</div>
+</section>
+
+<section id="formular">
+<div class="wrap">
+<div class="section-head">
+<h2>Nezávazná poptávka</h2>
+<p>Napište, jaký zájezd hledáte, a ozvu se vám zpět.</p>
+</div>
+<form class="form-shell" id="poptavkaForm">
+<div class="field">
+<label for="jmeno">Jméno a příjmení *</label>
+<input type="text" id="jmeno" name="jmeno" required placeholder="Pepa Hrom">
+</div>
+<div class="field">
+<label for="email">E-mail *</label>
+<input type="email" id="email" name="email" required placeholder="pepa.hrom@example.cz">
+</div>
+<div class="field">
+<label for="telefon">Telefon</label>
+<input type="tel" id="telefon" name="telefon" placeholder="+420 123 456 789">
+</div>
+<div class="field">
+<label for="zprava">Zpráva *</label>
+<textarea id="zprava" name="zprava" placeholder="Destinace, termín, počet osob..." required></textarea>
+</div>
+<button type="submit" class="btn btn-primary" id="btnSubmit">Odeslat poptávku</button>
+<p class="form-status" id="formStatus"></p>
+</form>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap foot-grid">
+<span>CA Havran Jiří - Štětí</span>
+<span >© <span id="year"></span> Všechna práva vyhrazena</span>
+</div>
+</footer>
+
+<script>
+// mobilní menu
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+const open = links.classList.toggle('open');
+toggle.setAttribute('aria-expanded', open);
+});
+links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+links.classList.remove('open');
+toggle.setAttribute('aria-expanded', 'false');
+}));
+
+// otevřeno / zavřeno badge podle realneho casu
+function updateStatus(){
+const now = new Date();
+const day = now.getDay(); // 0 = nedele, 6 = sobota
+const hour = now.getHours() + now.getMinutes()/60;
+
+let isOpen = false;
+if (day >= 1 && day <= 5) {
+    // pondeli az patek
+    isOpen = hour >= 10 && hour < 12;
+    isOpen = hour >= 14 && hour < 17;
+} else if (day === 6) {
+    // sobota
+    isOpen = false;
+}
+
+const chip = document.getElementById('statusChip');
+const text = document.getElementById('statusText');
+text.textContent = isOpen ? 'Nyní otevřeno' : 'Nyní zavřeno';
+chip.querySelector('.dot').style.background = isOpen ? '#3C6E68' : '#B8862E';
+}
+updateStatus();
+setInterval(updateStatus, 60000);
+
+// rok v paticce
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Odesilani formulare pres fastapi fetch
+document.getElementById('poptavkaForm').addEventListener('submit', async function(e){
+e.preventDefault();
+
+const btn = document.getElementById('btnSubmit');
+const status = document.getElementById('formStatus');
+
+const formData = {
+    jmeno: document.getElementById('jmeno').value,
+    email: document.getElementById('email').value,
+    telefon: document.getElementById('telefon').value || null,
+    zprava: document.getElementById('zprava').value
+};
+
+btn.disabled = true;
+btn.textContent = 'Odesílám...';
+status.className = 'form-status';
+status.style.display = 'none';
+
+try {
+    const response = await fetch('/api/poptavka', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+        status.className = 'form-status ok';
+        status.textContent = result.message || 'Poptávka byla úspěšně odeslána.';
+        this.reset();
+    } else {
+        throw new Error(result.detail || 'Odesílání se nepodařilo.');
+    }
+} catch (err) {
+    status.className = 'form-status err';
+    status.textContent = err.message || 'Nepodařilo se připojit k serveru.';
+} finally {
+    btn.disabled = false;
+    btn.textContent = 'Odeslat poptávku';
+}
+});
+</script>
+
+</body>
+</html>

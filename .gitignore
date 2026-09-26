@@ -1,0 +1,14 @@
+# Python mezipamet
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+
+# IDE AND EDITOR
+.vscode/
+.idea/
+
+#SYSTEM FILES
+.DS_Store
+Thumbs.db
