@@ -1,3 +1,4 @@
+<img width="1080" height="2243" alt="1000043611" src="https://github.com/user-attachments/assets/4cb2c9f9-3a58-41b2-8ced-cf268ba849cf" />
 # CA Havran Jiří - Web presentation
 
 Its a website i build for my friend like because he just started getting into these tech stuff i wanted to help him so i made him a webite that contains a form and his contact info.
