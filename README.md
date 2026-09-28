@@ -14,6 +14,6 @@ I hosted this in vercel because he wanted this free before he acutally knows if 
 
 And like i said i deployed this on vercel so it is free for now.
 
-## 📸 Preview
+## Preview
 This is how it looks like I think it looks like a postcard:
 <img width="1080" height="2243" alt="1000043611" src="https://github.com/user-attachments/assets/4cb2c9f9-3a58-41b2-8ced-cf268ba849cf" />
