@@ -16,10 +16,10 @@ app.add_middleware(
 )
 
 # Nacteni z Vercel Environment Variables (nebo výchozí hodnoty)
-MAIL_USERNAME = os.getenv("MAIL_USERNAME", "jirihavran@seznam.cz")
+MAIL_USERNAME = os.getenv("MAIL_USERNAME", "cajirihavran@gmail.com")
 MAIL_PASSWORD = os.getenv("MAIL_PASSWORD", "")
-MAIL_SERVER = os.getenv("MAIL_SERVER", "smtp.seznam.cz")
-MAIL_PORT = int(os.getenv("MAIL_PORT", "465"))
+MAIL_SERVER = os.getenv("MAIL_SERVER", "smtp.gmail.com")
+MAIL_PORT = int(os.getenv("MAIL_PORT", "587"))
 
 conf = ConnectionConfig(
     MAIL_USERNAME=MAIL_USERNAME,
