@@ -14,6 +14,23 @@ I hosted this in vercel because he wanted this free before he acutally knows if 
 
 And like i said i deployed this on vercel so it is free for now.
 
+## How to run locally
+
+1. **Clone this repo**
+```bash
+git clone https://github.com/citunek22/CA-Jiri-Havran
+cd CA-Jiri-Havran
+```
+
+2. **Setup the backend (Python)**
+```bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+3. **Open the file**
+Simply open the `index.html` file in your browser or use a Live Server extension in VS Code.
+
 ## Preview
 This is how it looks like I think it looks like a postcard:
 <img width="1080" height="2243" alt="1000043611" src="https://github.com/user-attachments/assets/4cb2c9f9-3a58-41b2-8ced-cf268ba849cf" />
