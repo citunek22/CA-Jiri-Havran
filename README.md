@@ -6,6 +6,8 @@ This site is custom build by me (and a bit from claude) but this website looks l
 
 ## Hosting
 I hosted this in vercel because he wanted this free before he acutally knows if he wants a website.
+Also here is the demo link:
+https://ca-jiri-havran.vercel.app/
 
 ## Tech Stack
 - **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
