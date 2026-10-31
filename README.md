@@ -1,20 +1,28 @@
-# CA Havran Jiří - Web presentation
 
-Its a website i build for my friend because he just started getting into these tech stuff. i wanted to help him so i made him a website that contains a form and his contact info.
+# CA Havran Jiří - Web Presentation
 
-This site is custom build by me (and a bit from claude) but this website looks like a postcard. Do you remember licking those poststamps or how you call them in english?
+A modern, responsive business website built for a local travel agency (CA Havran Jiří) to establish their online presence, showcase services, and allow clients to easily send inquiries.
 
-## Hosting
-I hosted this in vercel because he wanted this free before he acutally knows if he wants a website.
-Also here is the demo link:
-https://ca-jiri-havran.vercel.app/
+## Features & What It Does
+- **Interactive Homepage & Sections:** Clear presentation of agency services, contact details, and business hours.
+- **Working Inquiry Form:** Fully functional contact form where users can submit their name, email, phone number, and message.
+- **Backend Email Integration:** Connected to a Python (FastAPI) backend deployed on Vercel that processes form submissions and sends emails via SMTP with proper `Reply-To` functionality.
+- **GDPR Compliance:** Integrated data privacy notice informing users about personal data processing for inquiry handling.
+- **Responsive Design:** Optimized layout that works seamlessly on both mobile devices and desktop computers.
+
+## Live Demo
+Check out the live website here: [https://ca-jiri-havran.vercel.app/](https://ca-jiri-havran.vercel.app/)
 
 ## Tech Stack
 - **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
-- **Backend:** Python ([FastAPI](https://tiangolo.com), `fastapi-mail`)
-- **Deployment:** [Vercel](https://vercel.com)
+- **Backend:** Python, FastAPI, fastapi-mail
+- **Hosting & Deployment:** Vercel
 
-And like i said i deployed this on vercel so it is free for now.
+
+## also a word from me
+Its a website i build for my friend because he just started getting into these tech stuff. i wanted to help him so i made him a website that contains a form and his contact info.
+
+This site is custom build by me (and a bit from claude) but this website looks like a postcard. Do you remember licking those poststamps or how you call them in english
 
 ## How to run locally
 
